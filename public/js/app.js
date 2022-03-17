@@ -18,6 +18,8 @@ submitBtn.addEventListener('click', (e) => {
 })
 
 function postComment(comment) {
+
+    
     // Append to dom
     let data = {
         username: username,
@@ -32,14 +34,44 @@ function postComment(comment) {
 
 }
 
+function delete1(data)
+{
+    console.log("Inside")
+    console.log("DELETE",data)
+    const element = document.getElementById(data);
+    element.remove();
+    let dcomment={
+        id:data
+    }
+    deletedb(dcomment)
+
+}
+// function deletedb(category){
+   
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-type': 'text/plain', // or remove this headers section
+//         },
+//         bodydata: category
+//     }
+//      const response = fetch('/data', options);
+//      console.log(category);
+// }
+    
+
 function appendToDom(data,username) {
     console.log(data.username,"hiiiiiiiii")
 
     let lTag = document.createElement('li')
     lTag.classList.add('comment', 'mb-3')
+
     if(data.username=="Admin" || username=="Admin"){
         let markup = `
-        <div class="card border-light mb-3">
+        <div id=${data._id} class="card border-light mb-3">  
+            <div>
+                <button id="btn" type="button" onclick=delete1("${data._id}")>Delete</button>
+            </div>
             <div class="card-body">
                 <h6>${data.username}</h6>
                 <p>${data.comment}</p>
@@ -51,12 +83,14 @@ function appendToDom(data,username) {
         </div>
     `
     lTag.innerHTML = markup
-
     commentBox.prepend(lTag)
     }
     else{
         let markup = `
-        <div class="card border-light mb-3">
+        <div id=${data._id} class="card border-light mb-3">  
+            <div>
+                <button id="btn" type="button" data-id="${data.username}" onclick=delete1("${data._id}")>Delete</button>
+            </div>
             <div class="card-body">
                 <h6>Student</h6>
                 <p>${data.comment}</p>
@@ -117,21 +151,59 @@ function syncWithDb(data) {
         .then(response => response.json())
         .then(result => {
             console.log(result)
+            console.log(result._id,"ID")
         })
 }
 
+
+function deletedb(data) {
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+    fetch('/deletecomment', { method: 'POST', body:JSON.stringify(data),headers})
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            console.log(result._id,"ID")
+        })
+}
+
+
+
 function fetchComments () {
-    // console.log(username,"Fettttchhhh")
+
     fetch('/api/comments')
         .then(res => res.json())
         .then(result => {
             result.forEach((comment) => {
                 comment.time = comment.createdAt
-                // console.log(comment)
+                console.log(comment.username,username,comment.comment,"USRNAME")
+
+               
+
+                // console.log(comment,"Fetchhhh")
+                // console.log(x)
+
+
+
 
                 appendToDom(comment,username)
+                var element=document.getElementById('btn')
+                console.log(element)
+
+                 if(comment.username!=username && username!="Admin")
+                {
+                                        document.getElementById('btn').hidden=true;
+                    
+
+                }
+                
+
+
             })
         })
 }
+
+
 
 window.onload = fetchComments

@@ -1,15 +1,36 @@
+const { response } = require('express')
 const express = require('express')
 const app = express()
 
-const port = process.env.PORT || 3000
 
+const mongoose = require('mongoose');
+
+
+const port = process.env.PORT || 3000
+var bodyParser = require('body-parser');
 app.use(express.static('public'))
 
-const dbConnect = require('./db')
-dbConnect()
+// const dbConnect = require('./db')
+// dbConnect()
 const Comment = require('./models/comment')
 
 app.use(express.json())
+
+app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+
+
+  
+mongoose.connect('mongodb+srv://Anurag:Anurag@cluster0.toske.mongodb.net/Videojs?retryWrites=true&w=majority', {useNewUrlParser: true,useUnifiedTopology: true});
+try{
+    console.log("Db Connected!")
+    console.log("Db port up")
+}
+  catch(err){
+    console.log(err)
+}
+
 
 // Routes 
 app.post('/api/comments', (req, res) => {
@@ -23,11 +44,33 @@ app.post('/api/comments', (req, res) => {
 
 })
 
-app.get('/api/comments', (req, res) => {
-    Comment.find().then(function(comments) {
+app.get('/api/comments', async(req, res) => {
+    await Comment.find().then(function(comments) {
         res.send(comments)
     })
 })
+app.post('/deletecomment', async (request, repsonse) => {
+
+
+    let text1 = "ObjectId";
+    let text2 = "(";
+    let text3 = '"'
+    let text4=request.body.id
+    let text5='"'
+    let text6=")"
+    let result = text1.concat(text2, text3,text4,text5,text6);
+
+    // console.log(result)
+    // const query = { _id: result };
+    // var x = dbConnect.Comment.remove({"username":"Anurag"});
+    // console.log(x)
+
+    let comment_details= await Comment.deleteOne({"_id":text4})
+    console.log(comment_details)
+
+   })
+   
+
 
 
 const server = app.listen(port, () => {
