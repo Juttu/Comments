@@ -1,0 +1,520 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 105%;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+/* .vjs-control{
+    background-color: #7d2929;
+    height: 10px;
+    width: fit-content;
+} */
+
+.b1 {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+  p {
+    border: thin solid #777;
+    padding: 10px;
+ }
+ ul#marker-list,ul#marker-list1{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    margin-top: 10px;
+ }
+ 
+ ul#marker-list,ul#marker-list1 li{
+    position: relative;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;       
+ }
+ ul#marker-list,ul#marker-list1 li:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+ }
+ ul#marker-list,ul#marker-list1 li a{
+    display: block;
+    padding: 10px 15px;
+    color: #555;
+    text-decoration: none;
+ }
+ ul#marker-list,ul#marker-list1 li a:hover {
+    color: #555;
+    text-decoration: none;
+    background-color: #f5f5f5;
+ }
+ .vjs-tip-inner{
+    height: 80px;
+    width: 35px;
+    color: rgb(225, 110, 65);
+ }
+ .blue-marker-class{
+    background-color: #4949d8 !important;
+       }
+
+
+/* 
+          .vjs-break-overlay { 
+             animation: hideAnimation 0s ease-in 5s;
+             animation-fill-mode: forwards;
+          }
+
+          @keyframes hideAnimation {
+to {
+visibility: hidden;
+width: 0;
+height: 0;
+}
+} */
+
+
+
+
+
+
+
+
+
+
+            /* /* /* video container */
+.videoContainer {
+margin: 20px auto 0;
+}
+.advertisement{
+position:absolute;
+ color: rgb(230, 200, 98);
+ padding: 5px 10px;
+ text-align: right;
+ background: rgba(0, 0, 0, 0.4);
+bottom: 50px;
+ right:0;
+ font-size: 14px;
+ font-weight: 700;
+ z-index: 1 !important;
+}
+.hide{
+display:none;
+}
+
+
+
+.open-button {
+background-color: rgb(214, 16, 16);
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+bottom: 23px;
+right: 28px;
+width: 280px;
+margin-right:100px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+
+display: none;
+position: fixed;
+bottom: 0;
+right: 15px;
+border: 2px solid #525050;
+z-index: 9;
+margin-right:50%;
+margin-bottom:410px;
+
+
+}
+
+/* Add styles to the form container */
+.form-container {
+max-width: 300px;
+padding: 10px;
+background-color: white;
+}
+.form-container input[type=text], .form-container input[type=password] {
+width: 80%;
+padding: 15px;
+margin: 5px 0 22px 0;
+border: 1px solid #bbb8b8;
+background: #f1f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+background-color: #63d447;
+color: white;
+padding: 16px 20px;
+border: none;
+cursor: pointer;
+width: 50%;
+margin-bottom:10px;
+margin-left:10px;
+
+opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+background-color: rgb(248, 98, 98);
+
+
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+opacity: 1;
+}
+/* #bt{
+font-size: 20px;
+height: 0px;
+width: 0px;
+background-color: rgba(0,0,0,.5);
+margin-top: 20%;
+
+} */
+
+
+/* Facebook Comment Style */
+body{
+margin:20px;
+font-family: Helvetica, Arial, sans-serif;
+}
+.pull-right{
+float:right;
+}
+.pull-left{
+float:left;
+}
+#fbcomment{
+background:#fff;
+border: 1px solid #dddfe2;
+border-radius: 3px;
+color: #4b4f56;
+padding:50px;
+}
+.header_comment{
+font-size: 14px;
+overflow: hidden;
+border-bottom: 1px solid #e9ebee;
+line-height: 25px;
+margin-bottom: 24px;
+padding: 10px 0;
+}
+.sort_title{
+color: #4b4f56;
+}
+.sort_by{
+background-color: #f5f6f7;
+color: #4b4f56;
+line-height: 22px;
+cursor: pointer;
+vertical-align: top;
+font-size: 12px;
+font-weight: bold;
+vertical-align: middle;
+padding: 4px;
+justify-content: center;
+border-radius: 2px;
+border: 1px solid #ccd0d5;
+}
+.count_comment{
+font-weight: 600;
+}
+.body_comment{
+padding: 0 8px;
+font-size: 14px;
+display: block;
+line-height: 25px;
+word-break: break-word;
+}
+.avatar_comment{
+display: block;
+}
+.avatar_comment img{
+height: 48px;
+width: 48px;
+}
+.box_comment{
+display: block;
+position: relative;
+line-height: 1.358;
+word-break: break-word;
+border: 1px solid #d3d6db;
+word-wrap: break-word;
+background: #fff;
+box-sizing: border-box;
+cursor: text;
+font-family: Helvetica, Arial, sans-serif;
+font-size: 16px;
+padding: 0;
+}
+.box_comment textarea{
+min-height: 40px;
+padding: 12px 8px;
+width: 100%;
+border: none;
+resize: none;
+}
+.box_comment textarea:focus{
+outline: none !important;
+}
+.box_comment .box_post{
+border-top: 1px solid #d3d6db;
+background: #f5f6f7;
+padding: 8px;
+display: block;
+overflow: hidden;
+}
+.box_comment label{
+display: inline-block;
+vertical-align: middle;
+font-size: 11px;
+color: #90949c;
+line-height: 22px;
+}
+.box_comment button{
+margin-left:8px;
+background-color: #4267b2;
+border: 1px solid #4267b2;
+color: #fff;
+text-decoration: none;
+line-height: 22px;
+border-radius: 2px;
+font-size: 14px;
+font-weight: bold;
+position: relative;
+text-align: center;
+}
+.box_comment button:hover{
+background-color: #29487d;
+border-color: #29487d;
+}
+.box_comment .cancel{
+margin-left:8px;
+background-color: #f5f6f7;
+color: #4b4f56;
+text-decoration: none;
+line-height: 22px;
+border-radius: 2px;
+font-size: 14px;
+font-weight: bold;
+position: relative;
+text-align: center;
+border-color: #ccd0d5;
+}
+.box_comment .cancel:hover{
+background-color: #d0d0d0;
+border-color: #ccd0d5;
+}
+.box_comment img{
+height:16px;
+width:16px;
+}
+.box_result{
+margin-top: 24px;
+}
+.box_result .result_comment h4{
+font-weight: 600;
+white-space: nowrap;
+color: #365899;
+cursor: pointer;
+text-decoration: none;
+font-size: 14px;
+line-height: 1.358;
+margin:0;
+}
+.box_result .result_comment{
+display:block;
+overflow:hidden;
+padding: 0;
+}
+.child_replay{
+border-left: 1px dotted #d3d6db;
+margin-top: 12px;
+list-style: none;
+padding:0 0 0 8px;
+margin-left :10px;
+}
+.reply_comment{
+margin:12px 0;
+}
+.box_result .result_comment p{
+margin: 4px 0;
+text-align:justify;
+}
+.box_result .result_comment .tools_comment{
+font-size: 12px;
+line-height: 1.358;
+}
+.box_result .result_comment .tools_comment a{
+color: #4267b2;
+cursor: pointer;
+text-decoration: none;
+}
+.box_result .result_comment .tools_comment span{
+color: #90949c;
+}
+.body_comment .show_more{
+background: #3578e5;
+border: none;
+box-sizing: border-box;
+color: #fff;
+font-size: 14px;
+margin-top: 24px;
+padding: 12px;
+text-shadow: none;
+width: 100%;
+font-weight:bold;
+position: relative;
+text-align: center;
+vertical-align: middle;
+border-radius: 2px;
+}
+
+
+
+
+.react {
+  
+  --r:100px;
+  display:inline-grid;
+  vertical-align:middle;
+  cursor:pointer;
+  width: var(--r);
+  height: var(--r);
+  border-radius:50%;
+  margin: calc(var(--r)/3);
+  line-height: var(--r);
+  text-align:center;
+  transform:rotate(0);
+  margin-top: -2px;
+}
+
+.react i[data-icon]:before {
+  content:attr(data-icon);
+  font-style:normal;
+  font-size:calc(0.6*var(--r));
+}
+
+.react i:before {
+  grid-area:1/1;
+  font-size:calc(0.8*var(--r));
+}
+
+.react i{
+  /* filter:grayscale(100%); */
+  transform:scale(1);
+  grid-area:1/1;
+  display:inherit;
+  line-height:inherit;
+  transition: transform .6s cubic-bezier(0.5,-12,1,-12);
+}
+.react:hover{
+  transform:rotate(0.1deg);
+  transition:transform 0.25s cubic-bezier(0.5,400,0.5,-400);
+}
+.react:before {
+  content:"";
+  grid-area:1/1;
+  border-radius:50%;
+  border:solid orange calc(var(--r)/2);
+  transform:scale(0);
+}
+.react:after,
+.react i:after{
+  content:"";
+  grid-area:1/1;
+  margin: calc(var(--r)/-2);
+  --c1:radial-gradient(red    50%,#0000 60%);
+  --c2:radial-gradient(orange 50%,#0000 60%);
+  background:
+    var(--c1),var(--c1),var(--c1),var(--c1),
+    var(--c2),var(--c2),var(--c2),var(--c2); 
+  background-size:calc(var(--r)/6) calc(var(--r)/6); 
+  background-position:
+    calc(50% - var(--r)/2) calc(50% - var(--r)/2),
+    calc(50% + var(--r)/2) calc(50% - var(--r)/2),
+    calc(50% - var(--r)/2) calc(50% + var(--r)/2),
+    calc(50% + var(--r)/2) calc(50% + var(--r)/2),
+    calc(50% +  0px) calc(50% + var(--r)*0.707),
+    calc(50% + var(--r)*0.707) calc(50% +  0px),
+    calc(50% - var(--r)*0.707) calc(50% +  0px),
+    calc(50% +  0px) calc(50% - var(--r)*0.707);
+  background-repeat:no-repeat;
+  transform:scale(0);
+}
+.react i:after {
+  background-size:calc(var(--r)/8) calc(var(--r)/8);
+  transform:rotate(60deg) scale(0);
+}
+
+.emote:checked + .react i {
+  filter:grayscale(0);
+  transform:scale(0.95);
+  transition:
+     filter .5s .5s,
+     transform 1s cubic-bezier(0,26.67,.5,26.67);
+}
+.emote:checked + .react:before {
+  border-width:0;
+  transform:scale(1);
+  transition:
+    transform 0.5s,
+    border-width 0.5s 0.5s;
+}
+.emote:checked + .react:after,
+.emote:checked + .react i:after{
+  transform:scale(1);
+  opacity:0;
+  background-size:0 0;
+  transition:
+    transform 0.5s 0.5s,
+    opacity   0.4s 0.9s,
+    background-size 0.5s 0.9s;
+}
+
+.emote:checked + .react i:after {
+  transform:rotate(55deg) scale(1);
+}
+
+
+.emote {
+  position:absolute;
+  visibility:hidden;
+  clip-path:inset(50%)
+}

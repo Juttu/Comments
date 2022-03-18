@@ -15,7 +15,15 @@ submitBtn.addEventListener('click', (e) => {
         return
     }
     postComment(comment)
+    closeForm()
 })
+
+function closeForm() {
+
+    open=0
+    document.getElementById("myForm").style.display = "none";
+    
+    }
 
 function postComment(comment) {
 
