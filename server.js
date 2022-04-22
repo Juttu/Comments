@@ -13,6 +13,8 @@ app.use(express.static('public'))
 // const dbConnect = require('./db')
 // dbConnect()
 const Comment = require('./models/comment')
+const User = require('./models/user')
+
 
 app.use(express.json())
 
@@ -49,6 +51,33 @@ app.get('/api/comments', async(req, res) => {
         res.send(comments)
     })
 })
+
+app.post('/check', async(req, res) => {
+
+    console.log(req.body.id)
+    
+    let user = await User.findOne({id:req.body.id})
+    if(user==null){
+        res.send("0")
+    }
+    else{
+        if(user.password == req.body.password)
+        {
+            console.log("PASSWORDDDDOKKKKKK")
+            res.send("1")
+        }
+        else{
+            res.send("0")
+        }
+
+    }
+
+
+    console.log(user)
+   
+
+})
+
 app.post('/deletecomment', async (request, repsonse) => {
 
 

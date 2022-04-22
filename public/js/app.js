@@ -168,7 +168,7 @@ function deletedb(data) {
     const headers = {
         'Content-Type': 'application/json'
     }
-    fetch('/deletecomment', { method: 'POST', body:JSON.stringify(data),headers})
+    fetch('/check', { method: 'POST', body:JSON.stringify(data),headers})
         .then(response => response.json())
         .then(result => {
             console.log(result)
