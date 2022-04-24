@@ -4,6 +4,7 @@ do {
     username = prompt('Enter your name: ')
 } while(!username)
 
+
 const textarea = document.querySelector('#textarea')
 const submitBtn = document.querySelector('#submitBtn')
 const commentBox = document.querySelector('.comment__box')
