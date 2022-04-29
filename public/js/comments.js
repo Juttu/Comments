@@ -37,7 +37,7 @@ function check(data) {
         .then(result => {
             console.log(result)
             if(result=="1"){
-                    location.href = "comments.html";
+                    location.href = "playlist.html";
                 }
                 else{
                     location.href = "index.html";

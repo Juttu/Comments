@@ -31,6 +31,7 @@ function postComment(comment) {
     
     // Append to dom
     let data = {
+
         username: username,
         comment: comment
     }
@@ -52,6 +53,8 @@ function delete1(data)
     let dcomment={
         id:data
     }
+    console.log(element,dcomment,"Element")
+
     deletedb(dcomment)
 
 }
@@ -169,7 +172,7 @@ function deletedb(data) {
     const headers = {
         'Content-Type': 'application/json'
     }
-    fetch('/check', { method: 'POST', body:JSON.stringify(data),headers})
+    fetch('/deletecomment', { method: 'POST', body:JSON.stringify(data),headers})
         .then(response => response.json())
         .then(result => {
             console.log(result)

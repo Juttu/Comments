@@ -39,14 +39,14 @@
         <!-- <input type="checkbox" id="r4"><label for="r4" class="react"  style="--r:15px"><i data-icon="👍"></i></label> -->
      
      
-       <div class="videoContainer">
+       <div id="videocontainer" class="videoContainer">
      
-        <video id="test_video" muted controls preload="none" preferFullWindow="true" class="video-js vjs-default-skin" width="720" height="350" >
-           <!-- <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-           <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm"> -->
-           <source src="3min.mp4" type="video/mp4">
+        <!-- <video id="test_video" muted controls preload="none" preferFullWindow="true" class="video-js vjs-default-skin" width="720" height="350" >
+           
+           <source id="srcvideo" src="images/vid-1.mp4" type="video/mp4">
      
-        </video>
+        </video> -->
+        <video id="test_video" src="images/vid-2.mp4" loop controls class="video-js vjs-default-skin" width="720" height="350"></video>
        <div class="moveToVideoJs">
         <div class="advertisement">
            <!-- <button class="advertisement" onclick="openForm()">Comment </button> -->
@@ -752,6 +752,17 @@ function emotecountodd(timearray,t)
 
    // return counter,a,c,d
 }
+
+   var favoritemovie = sessionStorage.getItem("favoriteMovie");
+   let result = favoritemovie.slice(22);
+   let r1="file:///Users/juttugajendraanurag/desk/Comments/public/"
+   result=r1+result
+
+    console.log(result,"RESULT");
+   //  document.getElementById("movie").innerHTML=favoritemovie  
+   console.log(document.querySelector('#videocontainer #test_video'),"QUERYY")
+ 
+   document.querySelector('.videoContainer .video-js .vjs-default-skin').src = favoritemovie;
 
 
       

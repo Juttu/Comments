@@ -1,0 +1,13 @@
+<h1 id="movie"></h1>
+ <div class="main-video-container">
+      <video src="images/vid-1.mp4" loop controls class="main-video"></video>
+      <h3 class="main-vid-title">house flood animation</h3>
+   </div>
+
+<script>
+    var favoritemovie = sessionStorage.getItem("favoriteMovie");
+    console.log(favoritemovie);
+    document.getElementById("movie").innerHTML=favoritemovie   
+    document.querySelector('.main-video-container .main-video').src = favoritemovie;
+     
+</script>
