@@ -46,9 +46,15 @@ app.post('/api/comments', (req, res) => {
 
 })
 
-app.get('/api/comments', async(req, res) => {
-    await Comment.find().then(function(comments) {
-        res.send(comments)
+app.post('/comments', async(req, res) => {
+
+    console.log(req.body.video_name)
+
+
+
+    await Comment.find({video_name:req.body.video_name}).then(function(comments) {
+        console.log(comments)
+       res.send(comments)
     })
 })
 

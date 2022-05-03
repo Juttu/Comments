@@ -13,6 +13,7 @@
 
     <link href="videojs.markers.css" rel="stylesheet">
    <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="/css/delete.css">
 
 
 
@@ -22,6 +23,11 @@
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+   <style>
+      .card-body{
+         border-radius: 10px;
+      }
+   </style>
 
 </head>
 
@@ -41,12 +47,12 @@
      
        <div id="videocontainer" class="videoContainer">
      
-        <!-- <video id="test_video" muted controls preload="none" preferFullWindow="true" class="video-js vjs-default-skin" width="720" height="350" >
+        <video id="test_video" muted controls preload="none" preferFullWindow="true" class="video-js vjs-default-skin" width="720" height="350" >
            
            <source id="srcvideo" src="images/vid-1.mp4" type="video/mp4">
      
-        </video> -->
-        <video id="test_video" src="images/vid-2.mp4" loop controls class="video-js vjs-default-skin" width="720" height="350"></video>
+        </video>
+        <!-- <video id="test_video" src="images/vid-2.mp4" loop controls class="video-js vjs-default-skin" width="720" height="350"></video> -->
        <div class="moveToVideoJs">
         <div class="advertisement">
            <!-- <button class="advertisement" onclick="openForm()">Comment </button> -->
@@ -86,9 +92,9 @@
      
      
       
-      <ul style="margin-left: 65%; margin-top: -30%;width: 100px;" id='marker-list'>Reactions :
+      <!-- <ul style="margin-left: 65%; margin-top: -30%;width: 100px;" id='marker-list'>Reactions :
        
-      </ul>
+      </ul> -->
      
      
     
@@ -115,7 +121,7 @@
 
 
 
-        <div style="margin-left:750px;margin-top:-200px;height: 400px;width:400px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+        <div style="margin-left:750px;margin-top:-627px;height: 352px;width:400px;border:1px solid #ccc;overflow:auto;background-color: white;">
 
         
             <div style="margin-left: 20px;margin-top: 20px;" class="row">
@@ -131,7 +137,6 @@
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
-    <script src="/js/app.js"></script>
 
 
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -754,18 +759,25 @@ function emotecountodd(timearray,t)
 }
 
    var favoritemovie = sessionStorage.getItem("favoriteMovie");
-   let result = favoritemovie.slice(22);
-   let r1="file:///Users/juttugajendraanurag/desk/Comments/public/"
-   result=r1+result
+   var video_name=favoritemovie.slice(29)
+   video_name = video_name.slice(0, -4);
 
-    console.log(result,"RESULT");
+   sessionStorage.setItem("video_name", video_name);
+
+   favoritemovie = favoritemovie.slice(22);
+  
+
+   console.log(favoritemovie,video_name,"RESULT");
    //  document.getElementById("movie").innerHTML=favoritemovie  
-   console.log(document.querySelector('#videocontainer #test_video'),"QUERYY")
+   document.querySelector('#test_video_html5_api').src = favoritemovie;
+
  
-   document.querySelector('.videoContainer .video-js .vjs-default-skin').src = favoritemovie;
+   // document.querySelector('.videoContainer .video-js .vjs-default-skin').src = favoritemovie;
 
 
       
 </script>
+<script src="/js/app.js"></script>
+
 
 </html>

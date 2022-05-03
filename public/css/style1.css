@@ -10,7 +10,7 @@
 }
 
 body{
-   background-color: coral;
+   background-color:#f7a700;
    padding:20px;
 }
 
@@ -43,8 +43,8 @@ body{
 }
 
 .container .video-list-container{
-   flex:1 1 350px;
-   height: 485px;
+   flex:1 1 400px;
+   height: 600px;
    overflow-y: scroll;
    border-radius: 5px;
    box-shadow: 0 5px 15px rgba(0,0,0,.1);
@@ -69,12 +69,14 @@ body{
 .container .video-list-container .list{
    display: flex;
    align-items: center;
-   gap:15px;
+   gap: 20px;
    padding:10px;
    background-color: #eee;
    cursor: pointer;
    border-radius: 5px;
    margin-bottom: 10px;
+   width: 500px;
+
 }
 
 .container .video-list-container .list:last-child{
@@ -83,6 +85,7 @@ body{
 
 .container .video-list-container .list.active{
    background-color: #444;
+   width: 500px;
 }
 
 .container .video-list-container .list.active .list-title{
@@ -90,7 +93,7 @@ body{
 }
 
 .container .video-list-container .list .list-video{
-   width: 100px;
+   width: 150px;
    border-radius: 5px;
 }
 

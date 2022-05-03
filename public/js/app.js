@@ -1,8 +1,16 @@
-let username 
+
 let socket = io()
-do {
-    username = prompt('Enter your name: ')
-} while(!username)
+
+var video_name = sessionStorage.getItem("video_name");
+let vname = {
+
+   
+    video_name:video_name
+}
+console.log(vname)
+
+let username = sessionStorage.getItem("id");
+console.log(username,video_name,"IDIDIDIDIDIDIDIDIDID")
 
 
 const textarea = document.querySelector('#textarea')
@@ -33,7 +41,8 @@ function postComment(comment) {
     let data = {
 
         username: username,
-        comment: comment
+        comment: comment,
+        video_name:video_name
     }
     appendToDom(data)
     textarea.value = ''
@@ -80,17 +89,19 @@ function appendToDom(data,username) {
 
     if(data.username=="Admin" || username=="Admin"){
         let markup = `
-        <div id=${data._id} class="card border-light mb-3">  
-            <div>
-                <button id="btn" type="button" onclick=delete1("${data._id}")>Delete</button>
-            </div>
-            <div class="card-body">
-                <h6>${data.username}</h6>
-                <p>${data.comment}</p>
-                <div>
-                    <img src="/img/clock.png" alt="clock">
-                    <small>${moment(data.time).format('LT')}</small>
+        <div style="border-radius: 20px;" id=${data._id} class="card border-light mb-3">  
+           
+            <div style="background-color:#efece7
+            " class="card-body">
+                <h6>${data.username} </h6>
+                <a>${data.comment} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>${moment().format(" MMMM Do, h:mm a")}</small></a>
+                <div class="btn" id="btn" type="button" onclick=delete1("${data._id}")>
+                <a href="" >DELETE</a>
+                <div class="hoverBtn">
+                  <p class="hoverText">SURE?</p>
                 </div>
+             </div>
+               
             </div>
         </div>
     `
@@ -99,17 +110,19 @@ function appendToDom(data,username) {
     }
     else{
         let markup = `
-        <div id=${data._id} class="card border-light mb-3">  
-            <div>
-                <button id="btn" type="button" data-id="${data.username}" onclick=delete1("${data._id}")>Delete</button>
-            </div>
-            <div class="card-body">
+        <div style="border-radius: 20px;" id=${data._id} class="card border-light mb-3">  
+           
+            <div style="background-color:#efece7
+            " class="card-body">
                 <h6>Student</h6>
-                <p>${data.comment}</p>
-                <div>
-                    <img src="/img/clock.png" alt="clock">
-                    <small>${moment(data.time).format('LT')}</small>
+                <a>${data.comment} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>${moment().format(" MMMM Do, h:mm a")}</small></a>
+                <div class="btn" id="btn" type="button" onclick=delete1("${data._id}")>
+                <a href="" >DELETE</a>
+                <div class="hoverBtn">
+                  <p class="hoverText">SURE?</p>
                 </div>
+             </div>
+               
             </div>
         </div>
     `
@@ -184,9 +197,23 @@ function deletedb(data) {
 
 function fetchComments () {
 
-    fetch('/api/comments')
+    var video_name = sessionStorage.getItem("video_name");
+    let vname = {
+
+    
+        video_name:video_name
+    }
+
+    console.log("Fetchhh",vname)
+
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+
+    fetch('/comments', { method: 'POST', body:JSON.stringify(vname),headers})
         .then(res => res.json())
         .then(result => {
+            console.log(result,"RESS")
             result.forEach((comment) => {
                 comment.time = comment.createdAt
                 console.log(comment.username,username,comment.comment,"USRNAME")

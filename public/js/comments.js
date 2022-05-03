@@ -4,6 +4,8 @@
 
      id=document.getElementById("fname").value
      password=document.getElementById("lname").value
+     sessionStorage.setItem("id", id);
+     
     // console.log(id,"Its ID")
 
     // console.log(password,"Its Password")
