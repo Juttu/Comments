@@ -14,6 +14,7 @@ app.use(express.static('public'))
 // dbConnect()
 const Comment = require('./models/comment')
 const User = require('./models/user')
+const Emote = require('./models/emote')
 
 
 app.use(express.json())
@@ -38,8 +39,10 @@ try{
 app.post('/api/comments', (req, res) => {
     const comment = new Comment({
         username: req.body.username,
-        comment: req.body.comment
+        comment: req.body.comment,
+        video_name:req.body.video_name
     })
+
     comment.save().then(response => {
         res.send(response)
     })
@@ -105,6 +108,74 @@ app.post('/deletecomment', async (request, repsonse) => {
     console.log(comment_details)
 
    })
+
+
+   app.post('/saveemote', async (request, repsonse) => {
+
+    let user = await Emote.findOne({
+        username: request.body.username,
+        video_name:request.body.video_name
+    });
+    // console.log(user,"USERRRr")
+
+    console.log(user)
+    if (!user) {
+        user = new Emote({
+            username: request.body.username,
+            video_name:request.body.video_name,
+            likes: []
+        });
+        
+
+    }
+    user.likes.push(request.body.likes);
+    await user.save();
+    console.log(request.body.username)
+    
+
+       
+
+
+   })
+
+   app.post('/fetchemote', async (req, res) => {
+
+
+    console.log(req.body,"1sttt")
+    emote = await Emote.find({video_name:req.body.video_name}).select('likes').then(function(emote) {
+        // console.log(emote,"2nddd")
+        return emote
+    })
+    // console.log(emote[0].likes)
+    var likes_array=[]
+    await emote.forEach(element => {
+
+
+
+        likes_array=likes_array.concat(element.likes)
+
+        
+    });
+    var likes_array_int=[]
+    await likes_array.forEach(element_1=>{
+
+        likes_array_int=likes_array_int.concat(parseInt(element_1)+1)
+
+    })
+    console.log(likes_array_int,"INTTT")
+
+    res.send(likes_array_int)
+
+
+    
+
+
+    
+
+       
+    })
+   
+
    
 
 

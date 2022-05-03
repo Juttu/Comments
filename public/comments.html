@@ -182,12 +182,9 @@ function onloadfun() {
 
 //load the marker plugin
 
-var markers = [
-      // {
-      //    time: 9.5,
-      //    text: "Hello"
-      // }
-   ];
+var markers = [];
+
+
 
 //load the marker plugin
 player.markers({
@@ -210,7 +207,7 @@ player.markers({
    markers: markers
 });
 
-var smile=0;
+         var smile=0;
          var smile1=0;
          var smile2=0;
          var smile3=0;
@@ -220,7 +217,7 @@ var smile=0;
          var c=0;
          var com=0
 
-
+        
 
 ///////////////////////////////////emote1
          var myButton = player.controlBar.addChild("button");
@@ -237,6 +234,33 @@ var smile=0;
                      // $(document).ready(function(){
             tt=1
             myButtonDom.onclick = function(){
+
+
+               //Videoname
+               var favoritemovie = sessionStorage.getItem("favoriteMovie");
+               var video_name=favoritemovie.slice(29)
+               video_name = video_name.slice(0, -4);
+               let username = sessionStorage.getItem("id");
+               console.log(video_name,username,"VNAMEEEEEE")
+               var t=player.currentTime();
+               //Fetch
+               let data = {
+
+                  username: username,
+                  likes:t,
+                  video_name:video_name
+               }
+               const headers = {
+                     'Content-Type': 'application/json'
+                     }
+                  fetch('/saveemote', { method: 'POST', body:JSON.stringify(data),headers})
+                     .then(response => response.json())
+                     .then(result => {
+                           console.log(result)
+                           
+                     })
+
+
 
             var today = new Date();
             var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -776,6 +800,61 @@ function emotecountodd(timearray,t)
 
 
       
+</script>
+<script>
+   let name = {
+
+   
+      video_name:video_name
+   }
+   console.log(name,"ITSNAME")
+   function getOccurrence(array, value) {
+    var count = 0;
+    array.forEach((v) => (v === value && count++));
+    return count;
+}
+   const headers = {
+        'Content-Type': 'application/json'
+    }
+    fetch('/fetchemote', { method: 'POST', body:JSON.stringify(name),headers})
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            function count_duplicate(a){
+               let counts = {}
+
+               for(let i =0; i < a.length; i++){ 
+                  if (counts[a[i]]){
+                  counts[a[i]] += 1
+                  } else {
+                  counts[a[i]] = 1
+                  }
+                  }  
+                  for (let prop in counts){
+                     if (counts[prop] >= 2){
+                           // console.log(prop + " counted: " + counts[prop] + " times.")
+                     }
+                  }
+               // console.log(counts)
+               return counts
+            }
+            du=count_duplicate(result)
+            console.log(du)
+            
+            // console.log(Object.entries(du),"ARR")
+            var emote_array1= Object.entries(du)
+            emote_array1.forEach(e=>{
+
+                  markers.push({time:e[0],text:"👍 : "+e[1]})
+
+
+            })
+            // markers.push({time:element,text:"👍 : "})
+
+               
+         
+
+        })
 </script>
 <script src="/js/app.js"></script>
 

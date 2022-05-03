@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const commentSchema = new Schema({
+const emoteSchema = new Schema({
     username: { type: String, required: true },
-    comment: { type: String, require: true },
+    
     video_name: { type: String, require: true },
+    
     likes: [{
         type: Number,
         required: false,
@@ -15,6 +16,6 @@ const commentSchema = new Schema({
 
 }, { timestamps: true })
 
-const Comment = mongoose.model('Comment', commentSchema)
+const Emote = mongoose.model('Emote', emoteSchema)
 
-module.exports = Comment
+module.exports = Emote
