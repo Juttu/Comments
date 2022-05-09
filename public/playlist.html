@@ -8,10 +8,32 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style1.css">
-   
+
+   <link rel="stylesheet" href="css/style2.css">
+
+   <link rel="stylesheet" href="css/index.css">
+
+   <link rel="stylesheet" href="css/button.css">
 
 </head>
 <body>
+    <header class="header-fixed">
+
+        <div class="header-limiter">
+    
+        <h1>            <img style="margin-top: -35px;" src="https://iitpkd.ac.in/themes/basic/logo.png" alt="Girl in a jacket" width="400" height="70"></h1>
+            <!-- <img src="https://iitpkd.ac.in/sites/default/files/inline-images/IIT_PKD_long%20logo_RGB.jpg" alt="Girl in a jacket" width="50" height="50"> -->
+
+
+            <nav>
+               
+                <a href="index.html">Logout</a>
+            </nav>
+    
+        </div>
+    
+    </header>
+    
    
 <div class="container">
 
@@ -20,83 +42,186 @@
       <h3 class="main-vid-title">house flood animation</h3>
    </div> -->
 
-   <div class="video-list-container">
+   <div style="margin-top: -77px;" class="video-list-container">
 
-    <h3 class="list-title">house flood animation</h3>
+    <h3 class="list-title">Physics</h3>
 
 
       <div class="list active">
          <video src="images/vid-1.mp4" class="list-video"></video>
-         <h3 class="list-title">house flood animation</h3>
+         <h3 class="list-title">Lecture Video-1
+            <span style="color:#6b6666;"><br>Duration : 15:30</span>
+            <span style="color:#6b6666;"><br>Total Comments : 10</span>
+
+         </h3>
       </div>
 
       <div class="list">
          <video src="images/vid-2.mp4" class="list-video"></video>
-         <h3 class="list-title">zoombie walking animation</h3>
+         <h3 class="list-title">Lecture Video-2
+            <span style="color:#6b6666;"><br>Duration : 10:20</span>
+            <span style="color:#6b6666;"><br>Total Comments : 12</span>
+
+         </h3>
       </div>
 
       <div class="list">
          <video src="images/vid-3.mp4" class="list-video"></video>
-         <h3 class="list-title">emoji falling animation</h3>
+         <h3 class="list-title">Lecture Video-3
+            <span style="color:#6b6666;"><br>Duration : 05:20</span>
+            <span style="color:#6b6666;"><br>Total Comments : 8</span>
+
+         </h3>
       </div>
 
-      <h3 class="list-title">house flood animation</h3>
+      <h3 class="list-title">Chemistry</h3>
 
 
       <div class="list">
          <video src="images/vid-4.mp4" class="list-video"></video>
-         <h3 class="list-title">3D town animation</h3>
+         <h3 class="list-title">Lecture Video-1
+            <span style="color:#6b6666;"><br>Duration : 08:35</span>
+            <span style="color:#6b6666;"><br>Total Comments : 18</span>
+
+         </h3>
       </div>
 
       <div class="list">
          <video src="images/vid-5.mp4" class="list-video"></video>
-         <h3 class="list-title">man chasing carrot animation</h3>
-      </div>
+         <h3 class="list-title"><br>Lecture Video-2
+            <span style="color:#6b6666;"><br>Duration : 25:30</span>
+            <span style="color:#6b6666;"><br>Total Comments : 15</span>
+
+            
+        </h3>
+         
+
+        </div>
 
       <div class="list">
          <video src="images/vid-6.mp4" class="list-video"></video>
-         <h3 class="list-title">door hinge animation</h3>
+         <h3 class="list-title">Lecture Video-3</h3>
       </div>
 
-      <h3 class="list-title">house flood animation</h3>
+    
 
-
-      <div class="list">
-         <video src="images/vid-7.mp4" class="list-video"></video>
-         <h3 class="list-title">poeple walking in town animation</h3>
-      </div>
-
-      <div class="list">
-         <video src="images/vid-8.mp4" class="list-video"></video>
-         <h3 class="list-title">knight chasing virus animation</h3>
-      </div>
-
-      <div class="list">
-         <video src="images/vid-9.mp4" class="list-video"></video>
-         <h3 class="list-title">3D helicopter animation</h3>
-      </div>
+      <ul class="comment__box">
+         
+                       
+      </ul>
 
    </div>
+   <div style="margin-top: -77px;" class="video-list-container1">
+    <h3 class="list-title1">Courses Available </h3><br>
+
+       
+        <div class="list1">
+            <video src="images/vid-8.mp4" class="list-video1"></video>
+            <h3 class="list-title1">Maths<span style="color:#4153fa;"><br><button type="button">Subscribe</button></span>
+   
+            </h3>
+         </div>
+         <div class="list1">
+            <video src="images/vid-7.mp4" class="list-video1"></video>
+            <h3 class="list-title1">Bio<span style="color:#4153fa;"><br><button type="button">Subscribe</button></span>
+   
+            </h3>
+         </div>
+   </div>
+
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
 <script>
 var id_id = sessionStorage.getItem("x");
     console.log(id_id,"IDIDIDIDIDIDIDIDIDID")
+    </script>
+
+    <script>
+       const commentBox = document.querySelector('.comment__box')
+       let videoList1 = document.querySelectorAll('.video-list-container1 .list1');
+      console.log(videoList,"List1")
+
+
+
+      videoList1.forEach(vid =>{
+         vid.onclick = () =>{
+            let src = vid.querySelector('.list-video1').src;
+
+            let title1 = vid.querySelector('.list-title1');
+            let title=title1.textContent
+            title=title.slice(0,-26);
+            console.log(title)
+            // document.querySelector('.main-video-container .main-video').src = src;
+            // document.querySelector('.main-video-container .main-video').play();
+            // document.querySelector('.main-video-container .main-vid-title').innerHTML = title;
+            // var favoritemovie = src;
+            // sessionStorage.setItem("favoriteMovie", favoritemovie);
+            open(title)
+         };
+      });
+
+      function open(title){
+
+         console.log(title,"TTTT")
+
+       
+         if(title=="Maths"){
+
+            let lTag1 = document.createElement('div')
+            lTag1.classList.add('comment', 'mb-3')
+            let markup = `
+               <h3 class="list-title">Maths</h3>
+
+
+               <div class="list">
+                  <video src="images/vid-1.mp4" class="list-video"></video>
+                  <h3 class="list-title">Lecture Video-1</h3>
+               </div>
+
+               <div class="list">
+                  <video src="images/vid-2.mp4" class="list-video"></video>
+                  <h3 class="list-title">Lecture Video-2</h3>
+               </div>
+
+               <div class="list">
+                  <video src="images/vid-3.mp4" class="list-video"></video>
+                  <h3 class="list-title">Lecture Video-33</h3>
+               </div>
+            `
+            lTag1.innerHTML = markup
+            commentBox.prepend(lTag1)
+         }
+         else{
+            let lTag1 = document.createElement('div')
+            lTag1.classList.add('comment', 'mb-3')
+            let markup = `
+               <h3 class="list-title">Bio</h3>
+
+
+               <div class="list">
+                  <video src="images/vid-7.mp4" class="list-video"></video>
+                  <h3 class="list-title">Lecture Video-1</h3>
+               </div>
+
+               <div class="list">
+                  <video src="images/vid-8.mp4" class="list-video"></video>
+                  <h3 class="list-title">Lecture Video-2</h3>
+               </div>
+
+               <div class="list">
+                  <video src="images/vid-9.mp4" class="list-video"></video>
+                  <h3 class="list-title">Lecture Video-33</h3>
+               </div>
+            `
+            lTag1.innerHTML = markup
+            commentBox.prepend(lTag1)
+
+         }
+      }
+     
     </script>
 
 </body>

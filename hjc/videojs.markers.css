@@ -26,6 +26,7 @@
   position: absolute;
   bottom: 14px;
   z-index: 100000;
+  width: 100px;
 }
 .vjs-tip .vjs-tip-arrow {
   background: url(data:image/gif;base64,R0lGODlhCQAJAIABAAAAAAAAACH5BAEAAAEALAAAAAAJAAkAAAIRjAOnwIrcDJxvwkplPtchVQAAOw==) no-repeat top left;
