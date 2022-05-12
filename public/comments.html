@@ -174,6 +174,12 @@ var timearray=[];
 //                {d:0}]
 var a,b,c,d=0;
 var counter=0
+var emote_number1=1
+var emote_number2=2
+var emote_number3=3
+
+var emote_number4=4
+
 
 document.getElementById("test_video").addEventListener("loadedmetadata", function() {
    // this.currentTime = 10;
@@ -251,30 +257,8 @@ player.markers({
             myButtonDom.onclick = function(){
 
 
-               //Videoname
-               var favoritemovie = sessionStorage.getItem("favoriteMovie");
-               var video_name=favoritemovie.slice(29)
-               video_name = video_name.slice(0, -4);
-               let username = sessionStorage.getItem("id");
-               console.log(video_name,username,"VNAMEEEEEE")
-               var t=player.currentTime();
-               //Fetch
-               let data = {
 
-                  username: username,
-                  likes:t,
-                  video_name:video_name
-               }
-               const headers = {
-                     'Content-Type': 'application/json'
-                     }
-                  fetch('/saveemote', { method: 'POST', body:JSON.stringify(data),headers})
-                     .then(response => response.json())
-                     .then(result => {
-                           console.log(result)
-                           
-                     })
-
+               save_comments(emote_number1)
 
 
             var today = new Date();
@@ -366,6 +350,7 @@ player.markers({
          myButtonDom1.style.cssText = 'font-size: 18px;';
          tt1=1
          myButtonDom1.onclick = function(){
+            save_comments(emote_number2)
 
 
             var today = new Date();
@@ -450,6 +435,8 @@ player.markers({
          myButtonDom3.style.cssText = 'font-size: 18px;';
          myButtonDom3.onclick = function(){
 
+            save_comments(emote_number3)
+
             var today = new Date();
             var time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             console.log(time1)
@@ -530,6 +517,11 @@ player.markers({
          myButtonDom4.innerHTML = '<button class="b1" <span style="font-size:25px;""><input class="emote" type="checkbox" id="r7"><label for="r7" class="react"  style="--r:40px"><i data-icon="😕"></i></label></span></button>';
          myButtonDom4.style.cssText = 'font-size: 18px;';
          myButtonDom4.onclick = function(){
+
+            console.log("4thhhhhhhhh",emote_number4)
+
+
+            save_comments(emote_number4)
 
 
 
@@ -817,6 +809,39 @@ function emotecountodd(timearray,t)
       
 </script>
 <script>
+   function save_comments(emote_number){
+
+         console.log("SAVE_COMMENTS")
+
+               var favoritemovie = sessionStorage.getItem("favoriteMovie");
+               var video_name=favoritemovie.slice(29)
+               video_name = video_name.slice(0, -4);
+               let username = sessionStorage.getItem("id");
+               console.log(video_name,username,"VNAMEEEEEE")
+               var t=player.currentTime();
+               console.log(t,emote_number,"TIMEEE")
+               //Fetch
+               let data = {
+
+                  username: username,
+                  likes:t,
+                  video_name:video_name,
+                  emote_number:emote_number
+               }
+               const headers = {
+                     'Content-Type': 'application/json'
+                     }
+               fetch('/saveemote', { method: 'POST', body:JSON.stringify(data),headers})
+                  .then(response => response.json())
+                  .then(result => {
+                        console.log(result,"RRRREEEESSSSLL")
+                        
+                  })
+
+   }
+    
+</script>
+<script>
    let name = {
 
    
@@ -827,14 +852,14 @@ function emotecountodd(timearray,t)
     var count = 0;
     array.forEach((v) => (v === value && count++));
     return count;
-}
+   }
    const headers = {
         'Content-Type': 'application/json'
     }
     fetch('/fetchemote', { method: 'POST', body:JSON.stringify(name),headers})
         .then(response => response.json())
         .then(result => {
-            console.log(result)
+            console.log(result,"result")
             function count_duplicate(a){
                let counts = {}
 
@@ -847,24 +872,189 @@ function emotecountodd(timearray,t)
                   }  
                   for (let prop in counts){
                      if (counts[prop] >= 2){
-                           // console.log(prop + " counted: " + counts[prop] + " times.")
                      }
                   }
                // console.log(counts)
                return counts
             }
-            du=count_duplicate(result)
-            console.log(du)
-            
-            // console.log(Object.entries(du),"ARR")
-            var emote_array1= Object.entries(du)
-            emote_array1.forEach(e=>{
+            var a1=[]
+            result.forEach((ee1)=>{
+               a1.push(count_duplicate(ee1))
 
-                  markers.push({time:e[0],text:"👍 : "+e[1]})
+            })
+            
+            console.log(a1,"dudud")
+            var a2=[]
+            a1.forEach((ee2)=>{
+               a2.push(Object.entries(ee2))
+
+            })
+            
+           
+            
+            console.log(a2,"FINALARRAY")
+             a2.forEach((ee3)=>{
+               ee3.forEach((ee4)=>{
+                  
+                     console.log(ee4[1],"EE%%5555")
+                     ee4[1]=Math.round(ee4[1]/2)
+                  
+                  
+               })
+            })
+
+            console.log(a2,"ARR")
+            var main_array=[]
+            var like=a2[0]
+            var smile=a2[1]
+            var doubt=a2[2]
+            var sad=a2[3]
+            console.log(like,smile,doubt,sad,"ASDSDSF")
+
+           
+            function search_like(val){
+
+
+               for(var i=0;i<like.length;i++){
+
+                  if(like[i][0]==val){
+                     console.log(i,like[i][1],"ELELEL")
+                     return [i,like[i][1]]
+                  }
+               }
+            }   
+
+         function search_smile(val){
+
+
+            for(var i=0;i<smile.length;i++){
+
+               if(smile[i][0]==val){
+                  console.log(i,smile[i][1],"ELELEL")
+                  return [i,smile[i][1]]
+               }
+            }
+         }
+         function search_doubt(val){
+
+
+            for(var i=0;i<doubt.length;i++){
+
+               if(doubt[i][0]==val){
+                  console.log(i,doubt[i][1],"ELELEL")
+                  return [i,doubt[i][1]]
+               }
+            }
+         }
+         function search_sad(val){
+
+
+            for(var i=0;i<sad.length;i++){
+
+               if(sad[i][0]==val){
+                  console.log(i,sad[i][1],"ELELEL")
+                  return [i,sad[i][1]]
+               }
+            }
+         }
+
+            like.forEach((el)=>{
+
+               console.log(el,"elellelelel")
+               var re=search_smile(el[0])      
+               var re1=search_doubt(el[0])
+               var re2=search_sad(el[0])
+               if(!re){
+                  re=[99,0]
+               }
+               if(!re1){
+                  re1=[99,0]
+               }
+               if(!re2){
+                  re2=[99,0]
+               }
+
+               main_array.push([el[0],el[1],re[1],re1[1],re2[1]])
+               console.log(main_array,"MAINARRAY")
+
+               
+               console.log(re,re1,re2,"REREeeeeeee")
+            })
+            smile.forEach((el1)=>{
+
+               console.log(el1,"elellelelel")
+               var r=search_like(el1[0])      
+               var r1=search_doubt(el1[0])
+               var r2=search_sad(el1[0])
+               if(!r){
+                  r=[99,0]
+               }
+               if(!r1){
+                  r1=[99,0]
+               }
+               if(!r2){
+                  r2=[99,0]
+               }
+
+               main_array.push([el1[0],r[1],el1[1],r1[1],r2[1]])
+               console.log(main_array,"MAINARRAY")
+
+
+               console.log(r,r1,r2,"REREeeeeeee")
+               })
+               doubt.forEach((el2)=>{
+
+                  console.log(el2,"elellelelel")
+                  var r3=search_like(el2[0])      
+                  var r4=search_smile(el2[0])
+                  var r5=search_sad(el2[0])
+                  if(!r3){
+                     r3=[99,0]
+                  }
+                  if(!r4){
+                     r4=[99,0]
+                  }
+                  if(!r5){
+                     r5=[99,0]
+                  }
+
+                  main_array.push([el2[0],r3[1],r4[1],el2[1],r5[1]])
+                  console.log(main_array,"MAINARRAY")
+
+
+                  // console.log(r,r1,r2,"REREeeeeeee")
+                  })
+                  sad.forEach((el3)=>{
+
+                     console.log(el3,"elellelelel")
+                     var r6=search_like(el3[0])      
+                     var r7=search_smile(el3[0])
+                     var r8=search_doubt(el3[0])
+                     if(!r6){
+                        r6=[99,0]
+                     }
+                     if(!r7){
+                        r7=[99,0]
+                     }
+                     if(!r8){
+                        r8=[99,0]
+                     }
+
+                     main_array.push([el3[0],r6[1],r7[1],r8[1],el3[1]])
+                     console.log(main_array,"MAINARRAY")
+
+
+                     // console.log(r,r1,r2,"REREeeeeeee")
+                     })
+
+
+
+         main_array.forEach(e=>{
+
+                  markers.push({time:e[0],text: "👍 : " + e[1] +" "+"😁 : " + e[2] + " " + "🤔 : " + e[3] +" " +"😕 :" + e[4]})
 
 
             })
-            // markers.push({time:element,text:"👍 : "})
 
                
          

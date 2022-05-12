@@ -11,6 +11,19 @@ const emoteSchema = new Schema({
         type: Number,
         required: false,
     }],
+    smile: [{
+        type: Number,
+        required: false,
+    }],
+    doubt: [{
+        type: Number,
+        required: false,
+    }],
+    sad: [{
+        type: Number,
+        required: false,
+    }]
+    
     
 
 
